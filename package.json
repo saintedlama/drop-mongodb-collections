@@ -1,0 +1,36 @@
+{
+  "name": "drop-mongodb-collections",
+  "version": "1.0.0",
+  "description": "Drops all (non system) mongodb collections",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test mocha test",
+    "cover": "cross-env NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report html"
+  },
+  "author": "Christoph Walcher <christoph.walcher@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saintedlama/drop-mongodb-collections.git"
+  },
+  "keywords": [
+    "mongodb",
+    "collections",
+    "test",
+    "testing"
+  ],
+  "bugs": {
+    "url": "https://github.com/saintedlama/drop-mongodb-collections/issues"
+  },
+  "homepage": "https://github.com/saintedlama/drop-mongodb-collections#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "cross-env": "^1.0.8",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "mongojs": "^2.4.0"
+  }
+}
