@@ -25,12 +25,12 @@
   "homepage": "https://github.com/saintedlama/drop-mongodb-collections#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "cross-env": "^1.0.8",
-    "istanbul": "^0.4.3",
+    "cross-env": "^2.0.0",
+    "istanbul": "^0.4.4",
     "mocha": "^2.5.3"
   },
   "dependencies": {
-    "async": "^2.0.0-rc.6",
+    "async": "^2.0.0",
     "mongojs": "^2.4.0"
   }
 }
