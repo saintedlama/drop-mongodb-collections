@@ -5,6 +5,8 @@ const dropMongodbCollections = require('../');
 const connectionString = 'mongodb://localhost/drop-mongodb-collections-tests';
 
 describe('drop-mongodb-collections', function() {
+  this.timeout(5000);
+
   let client;
 
   beforeEach((next) => {
