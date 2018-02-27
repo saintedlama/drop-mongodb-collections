@@ -13,7 +13,9 @@ module.exports = function cleanAll(connectionString) {
       db.listCollections().toArray((err, collections) => {
         if (err) { return done(err); }
 
-        async.each(collections, (collection, next) => db.dropCollection(collection.name, next), (err) => {
+        const collectionsToDrop = collections.filter(collection => collection.name.indexOf('system') != 0);
+
+        async.each(collectionsToDrop, (collection, next) => db.dropCollection(collection.name, next), (err) => {
           if (err) {
             debug('Could not drop all collections due to error %s', err);
 
