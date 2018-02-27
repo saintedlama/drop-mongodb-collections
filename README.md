@@ -2,10 +2,12 @@
 
 Drops all non system mongodb collections. To be used for tests.
 
-# Usage
+[![Build Status](https://travis-ci.org/saintedlama/drop-mongodb-collections.svg?branch=master)](https://travis-ci.org/saintedlama/drop-mongodb-collections)
 
-```
-npm i drop-mongodb-collections --save-dev
+## Usage
+
+```bash
+> npm i drop-mongodb-collections --save-dev
 ```
 
 ```js
@@ -15,7 +17,7 @@ const dropMongoDbCollections = require('drop-mongodb-collections')('mongodb://lo
 
 describe('something', function() {
   // Cleanup db before running tests
-  before(dropMongoDbCollections);
+  beforeEach(dropMongoDbCollections);
 
   // Your tests go here
 });
