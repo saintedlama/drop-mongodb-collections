@@ -7,8 +7,10 @@ const debug = require('debug')('drop-mongodb-collections');
 
 module.exports = function cleanAll(connectionString) {
   return function(done) {
-    connect(connectionString, (err, { client, db }) => {
+    connect(connectionString, (err, result) => {
       if (err) { return done(err); }
+
+      const { client, db } = result;
 
       db.listCollections().toArray((err, collections) => {
         if (err) { return done(err); }
