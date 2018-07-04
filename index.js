@@ -45,7 +45,7 @@ function connect(connectionString, next) {
   urlParser(connectionString, (err, parsedUrl) => {
     if (err) { return next(err); }
 
-    MongoClient.connect(connectionString, function(err, client) {
+    MongoClient.connect(connectionString, { useNewUrlParser: true }, function(err, client) {
       if (err) { return next(err); }
       
       const db = client.db(parsedUrl.dbName);

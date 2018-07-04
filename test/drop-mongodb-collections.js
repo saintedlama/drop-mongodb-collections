@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const MongoClient = require('mongodb').MongoClient;
 
 const dropMongodbCollections = require('../');
-const connectionString = 'mongodb://localhost/drop-mongodb-collections-tests';
+const connectionString = 'mongodb://localhost:27017/drop-mongodb-collections-tests';
 
 describe('drop-mongodb-collections', function() {
   this.timeout(5000);
@@ -10,7 +10,7 @@ describe('drop-mongodb-collections', function() {
   let client;
 
   beforeEach((next) => {
-    MongoClient.connect(connectionString, function(err, c) {
+    MongoClient.connect(connectionString, { useNewUrlParser: true }, function(err, c) {
       if (err) { return next(err); }
       
       client = c;
