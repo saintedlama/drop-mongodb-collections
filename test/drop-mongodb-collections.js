@@ -25,7 +25,7 @@ describe('drop-mongodb-collections', function() {
     const db = client.db('drop-mongodb-collections-tests');
     const items = db.collection('items');
 
-    items.insert({ foo: 'bar' }, (err) => {
+    items.insertOne({ foo: 'bar' }, (err) => {
       if (err) { return done(err); }
 
       const dropTestDb = dropMongodbCollections(connectionString);
@@ -51,7 +51,7 @@ describe('drop-mongodb-collections', function() {
       const db = client.db('drop-mongodb-collections-tests');
       const items = db.collection('items');
 
-      items.insert([{ foo: 'bar' }], next);
+      items.insertOne({ foo: 'bar' }, next);
     });
 
     beforeEach(dropMongodbCollections(connectionString));
