@@ -1,6 +1,6 @@
 {
   "name": "drop-mongodb-collections",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Drops all (non system) mongodb collections",
   "main": "index.js",
   "scripts": {

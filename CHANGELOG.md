@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.4"></a>
+## [1.2.4](https://github.com/saintedlama/drop-mongodb-collections/compare/v1.2.3...v1.2.4) (2018-08-14)
+
+
+### Bug Fixes
+
+* update dependencies ([2651503](https://github.com/saintedlama/drop-mongodb-collections/commit/2651503))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/saintedlama/drop-mongodb-collections/compare/v1.2.2...v1.2.3) (2018-07-04)
 
