@@ -25,10 +25,10 @@ module.exports = function cleanAll(connectionString) {
           }
 
           debug('Finished dropping collections');
-  
+
           client.close(true, (err) => {
-            if (err) { 
-              debug('Error while closing mongodb client %s', err); 
+            if (err) {
+              debug('Error while closing mongodb client %s', err);
             } else {
               debug('Closed mongodb connection');
             }
@@ -45,11 +45,11 @@ function connect(connectionString, next) {
   urlParser(connectionString, (err, parsedUrl) => {
     if (err) { return next(err); }
 
-    MongoClient.connect(connectionString, { useNewUrlParser: true }, function(err, client) {
+    MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
       if (err) { return next(err); }
-      
+
       const db = client.db(parsedUrl.dbName);
-    
+
       next(null, { db, client });
     });
   });

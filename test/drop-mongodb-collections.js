@@ -10,11 +10,11 @@ describe('drop-mongodb-collections', function() {
   let client;
 
   beforeEach((next) => {
-    MongoClient.connect(connectionString, { useNewUrlParser: true }, function(err, c) {
+    MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, c) {
       if (err) { return next(err); }
-      
+
       client = c;
-    
+
       next(null);
     });
   });
@@ -68,5 +68,5 @@ describe('drop-mongodb-collections', function() {
           done();
       });
     });
-  })
+  });
 });
