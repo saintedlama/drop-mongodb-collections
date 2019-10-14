@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "cross-env NODE_ENV=test nyc --reporter=text-summary mocha --recursive --throw-deprecation",
+    "test": "nyc --reporter=text-summary mocha --recursive --throw-deprecation",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "release": "standard-version"
   },
@@ -28,7 +28,6 @@
   "homepage": "https://github.com/saintedlama/drop-mongodb-collections#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "cross-env": "^6.0.3",
     "eslint": "^6.5.1",
     "mocha": "^6.2.1",
     "nyc": "^14.1.1",
