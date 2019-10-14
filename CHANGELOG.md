@@ -1,6 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.2.5](https://github.com/saintedlama/drop-mongodb-collections/compare/v1.2.4...v1.2.5) (2019-10-14)
+
+
+### Bug Fixes
+
+* remove cross-env to not break builds in node 6 and 7 ([a287480](https://github.com/saintedlama/drop-mongodb-collections/commit/a2874809e5fb897ffb074a827fea1600e6a9cab7))
+* update dependencies to fix vulnerabilitites ([c7932a1](https://github.com/saintedlama/drop-mongodb-collections/commit/c7932a1e8707d008e0b395abf4031f00fcf2ecfc))
 
 <a name="1.2.4"></a>
 ## [1.2.4](https://github.com/saintedlama/drop-mongodb-collections/compare/v1.2.3...v1.2.4) (2018-08-14)
