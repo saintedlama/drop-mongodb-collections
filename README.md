@@ -2,7 +2,9 @@
 
 Drops all non system mongodb collections. To be used for tests.
 
-[![Build Status](https://travis-ci.org/saintedlama/drop-mongodb-collections.svg?branch=master)](https://travis-ci.org/saintedlama/drop-mongodb-collections)
+[![Node.js CI](https://github.com/saintedlama/drop-mongodb-collections/actions/workflows/ci.yml/badge.svg)](https://github.com/saintedlama/drop-mongodb-collections/actions/workflows/ci.yml)
+
+[![Coverage Status](https://coveralls.io/repos/github/saintedlama/drop-mongodb-collections/badge.svg)](https://coveralls.io/github/saintedlama/drop-mongodb-collections)
 
 ## Usage
 
