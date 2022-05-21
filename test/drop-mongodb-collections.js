@@ -4,69 +4,49 @@ const MongoClient = require('mongodb').MongoClient;
 const dropMongodbCollections = require('../');
 const connectionString = 'mongodb://localhost:27017/drop-mongodb-collections-tests';
 
-describe('drop-mongodb-collections', function() {
+describe('drop-mongodb-collections', function () {
   this.timeout(5000);
 
   let client;
 
-  beforeEach((next) => {
-    MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, c) {
-      if (err) { return next(err); }
-
-      client = c;
-
-      next(null);
+  beforeEach(async () => {
+    client = await MongoClient.connect(connectionString, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
   });
 
-  afterEach((next) => client.close(next));
+  afterEach(async () => await client.close());
 
-  it('should drop all collections', function(done) {
+  it('should drop all collections', async () => {
     const db = client.db('drop-mongodb-collections-tests');
     const items = db.collection('items');
 
-    items.insertOne({ foo: 'bar' }, (err) => {
-      if (err) { return done(err); }
+    await items.insertOne({ foo: 'bar' });
 
-      const dropTestDb = dropMongodbCollections(connectionString);
+    await dropMongodbCollections(connectionString);
 
-      dropTestDb((err) => {
-        if (err) { return done(err); }
+    const cols = await db.listCollections().toArray();
 
-        // And now verify that we have no more collections in the db
-        db.listCollections()
-          .toArray((err, cols) => {
-            if (err) { return done(err); }
-
-            expect(cols.length).to.be.lte(1); // 'system.indexes'
-
-            done();
-        });
-      });
-    });
+    expect(cols.length).to.be.lte(1); // 'system.indexes'
   });
 
-  describe('mocha-before-each', function() {
-    beforeEach((next) => {
+  describe('mocha-before-each', function () {
+    beforeEach(async () => {
       const db = client.db('drop-mongodb-collections-tests');
       const items = db.collection('items');
 
-      items.insertOne({ foo: 'bar' }, next);
+      await items.insertOne({ foo: 'bar' });
     });
 
-    beforeEach(dropMongodbCollections(connectionString));
+    beforeEach(async () => await dropMongodbCollections(connectionString));
 
-    it('Should drop all connections before tests', function(done) {
+    it('Should drop all connections before tests', async () => {
       const db = client.db('drop-mongodb-collections-tests');
 
-      db.listCollections()
-        .toArray((err, cols) => {
-          if (err) { return done(err); }
+      const cols = await db.listCollections().toArray();
 
-          expect(cols.length).to.be.lte(1); // 'system.indexes'
-
-          done();
-      });
+      expect(cols.length).to.be.lte(1); // 'system.indexes'
     });
   });
 });
