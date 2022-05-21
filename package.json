@@ -37,7 +37,6 @@
     "standard-version": "^9.5.0"
   },
   "dependencies": {
-    "async": "^3.2.3",
     "mongodb": "^4.6.0"
   }
 }
