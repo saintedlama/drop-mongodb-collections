@@ -1,54 +1,44 @@
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb');
 const { parseOptions } = require('mongodb/lib/connection_string');
-
-const async = require('async');
 
 const debug = require('debug')('drop-mongodb-collections');
 
-module.exports = function cleanAll(connectionString) {
-  return function(done) {
-    connect(connectionString, (err, result) => {
-      if (err) { return done(err); }
+module.exports = async function dropMongodbCollections(connectionString) {
+  const { db, client } = await connect(connectionString);
 
-      const { client, db } = result;
+  const collections = await db.listCollections().toArray();
 
-      db.listCollections().toArray((err, collections) => {
-        if (err) { return done(err); }
+  const collectionsToDrop = collections.filter((collection) => collection.name.indexOf('system') != 0);
 
-        const collectionsToDrop = collections.filter(collection => collection.name.indexOf('system') != 0);
+  try {
+    debug(`Dropping ${collectionsToDrop.length} collections...`);
 
-        async.each(collectionsToDrop, (collection, next) => db.dropCollection(collection.name, next), (err) => {
-          if (err) {
-            debug('Could not drop all collections due to error %s', err);
+    for (const collection of collectionsToDrop) {
+      await db.dropCollection(collection.name);
+    }
 
-            return done(err);
-          }
+    debug('Finished dropping collections');
+  } catch (e) {
+    debug('Could not drop all collections due to error %s', e);
+    throw e;
+  }
 
-          debug('Finished dropping collections');
-
-          client.close(true, (err) => {
-            if (err) {
-              debug('Error while closing mongodb client %s', err);
-            } else {
-              debug('Closed mongodb connection');
-            }
-
-            done();
-          });
-        });
-      });
-    });
-  };
+  try {
+    await client.close(true);
+  } catch (e) {
+    debug('Could not close client connection due to error %s', e);
+  }
 };
 
-function connect(connectionString, next) {
+async function connect(connectionString) {
   const connectionOptions = parseOptions(connectionString);
 
-  MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
-    if (err) { return next(err); }
-
-    const db = client.db(connectionOptions.dbName);
-
-    next(null, { db, client });
+  const client = await MongoClient.connect(connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   });
+
+  const db = client.db(connectionOptions.dbName);
+
+  return { db, client };
 }
