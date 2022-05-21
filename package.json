@@ -8,6 +8,7 @@
     "lint:fix": "eslint . --fix",
     "test": "nyc --reporter=text-summary mocha --recursive --throw-deprecation",
     "test:ci": "nyc --reporter=lcov mocha --recursive --throw-deprecation",
+    "should-release": "should-release",
     "release": "standard-version"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
