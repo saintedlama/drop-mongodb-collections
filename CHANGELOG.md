@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/saintedlama/drop-mongodb-collections/compare/v1.2.6...v2.0.0) (2022-05-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* will not work with callbacks
+
+* chore: remove unused packages
+
+### Features
+
+* expose a promise based api ([#17](https://github.com/saintedlama/drop-mongodb-collections/issues/17)) ([55e107d](https://github.com/saintedlama/drop-mongodb-collections/commit/55e107d1d4a032bd4b9cd4fc4ebe1a4aaec23f1c))
+
+
+### Bug Fixes
+
+* update dependencies ([c1657f4](https://github.com/saintedlama/drop-mongodb-collections/commit/c1657f425a674800e26a189f97f8f72f353b8144))
+
 ### [1.2.6](https://github.com/saintedlama/drop-mongodb-collections/compare/v1.2.5...v1.2.6) (2021-01-09)
 
 ### [1.2.5](https://github.com/saintedlama/drop-mongodb-collections/compare/v1.2.4...v1.2.5) (2019-10-14)
