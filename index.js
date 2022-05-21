@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const urlParser = require('mongodb/lib/url_parser');
+const { parseOptions } = require('mongodb/lib/connection_string');
 
 const async = require('async');
 
@@ -42,15 +42,13 @@ module.exports = function cleanAll(connectionString) {
 };
 
 function connect(connectionString, next) {
-  urlParser(connectionString, (err, parsedUrl) => {
+  const connectionOptions = parseOptions(connectionString);
+
+  MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
     if (err) { return next(err); }
 
-    MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
-      if (err) { return next(err); }
+    const db = client.db(connectionOptions.dbName);
 
-      const db = client.db(parsedUrl.dbName);
-
-      next(null, { db, client });
-    });
+    next(null, { db, client });
   });
 }

@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "nyc --reporter=text-summary mocha --recursive --throw-deprecation",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test:ci": "nyc --reporter=lcov mocha --recursive --throw-deprecation",
     "release": "standard-version"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
