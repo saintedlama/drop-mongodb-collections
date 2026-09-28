@@ -4,6 +4,9 @@ coverage/
 testing
 testapp
 
+# build
+dist/
+
 # OSX
 .DS_Store
 
