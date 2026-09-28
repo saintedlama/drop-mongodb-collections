@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/saintedlama/drop-mongodb-collections/compare/v2.0.0...v3.0.0) (2026-09-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Drops support for Node.js versions earlier than 22 and upgrades mongodb dependency to ^7.6.0.
+
+### Code Refactoring
+
+* modernize stack with TypeScript, Vitest, and MongoDB 7 ([#28](https://github.com/saintedlama/drop-mongodb-collections/issues/28)) ([9da3b6a](https://github.com/saintedlama/drop-mongodb-collections/commit/9da3b6a87204d6e8c1aca91053b7d4a23d267ee8))
+
 ## [2.0.0](https://github.com/saintedlama/drop-mongodb-collections/compare/v1.2.6...v2.0.0) (2022-05-21)
 
 
